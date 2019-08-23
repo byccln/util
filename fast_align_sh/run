@@ -1,0 +1,31 @@
+#!/bin/sh
+
+if [ $# -lt 2 ];then
+    echo "parameter error!"
+    echo "Example: ./run sourcefile targetfile top_num(default 90%)"
+    echo "    -sourcefile    源语言文本"
+    echo "    -targetfile    目标语言文本"
+    echo "    -top_num       保留前top_num%的文本，默认90"
+    exit
+elif [ $# -eq 2 ];then
+    f1=$1
+    f2=$2
+    alpha=90 
+else
+    f1=$1
+    f2=$2
+    alpha=$3
+fi
+
+work_path=$(dirname $(readlink -f $0))
+len=`wc -l $f1 | awk '{print $1}'`
+top_num=`echo $len*$alpha/100 | bc`
+
+#合并源言语文本和目标语言文本为fast_align形式，如"aaa ||| bbb"
+$work_path/fast_align_merge.py $f1 $f2 merge.tmp
+#获取文本的fast_align的对齐得分
+fast_align -i merge.tmp -v -d -o -s | awk '{print $NF}' >scores.tmp
+#按对齐得分分割文本
+$work_path/nsort.py scores.tmp $f1 $f2 $top_num
+#清除中间文件
+rm merge.tmp & rm scores.tmp
