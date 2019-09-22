@@ -95,7 +95,6 @@ def tokenization(sentence):
     sent = re.sub(r'\s+$', '', sent)
     return sent
     
-    
 if __name__=="__main__":
     if len(sys.argv) < 3:
         print("参数不足")
