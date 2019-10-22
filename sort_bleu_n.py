@@ -48,7 +48,7 @@ for i in range(len(bleudict["num"])):
     fw.write(wstr)
 fw.close()
 
-fig, ax= plt.subplots()
+ax= plt.subplots()
 ax.plot(bleudict["len"], bleudict["bleu"], '.:', label="bleu")
 ax.plot(bleudict["len"], [num/5/group_number for num in bleudict["num"]], '.', label="(number of sentences)/{}".format(5*group_number), alpha=0.3)
 ax.set(ylabel="BLEU", xlabel="sentence length(word)", title="BLEU analysis")
