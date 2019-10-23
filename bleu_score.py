@@ -47,7 +47,7 @@ def get_bleu(reference_file, candidate_file, tokenize=False):
                 total[n] += value
                 if key in reference_dict:
                     correct[n] += min(reference_dict[key], value)      
-    #考虑够长惩罚并计算BLEU值
+    #考虑句长惩罚并计算BLEU值
     brevity_penalty = 1
     bleu = [0.]*4
     for n in range(4):
