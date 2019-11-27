@@ -23,3 +23,9 @@
     用途：获取candidate和reference的BLEU值，按句长分组，并plot分组后的句长-BLEU关系图
     依赖：bleu_score.py
     使用时需要修改candidate和reference的路径，及group_number(分组间隔)
+
+## zipfs.py
+
+    用途: 获取语料的词频和排名的关系，验证zipf's law，包括word和char两个level
+    示例：
+        ./zipfs.py filename
