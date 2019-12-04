@@ -29,3 +29,9 @@
     用途: 获取语料的词频和排名的关系，验证zipf's law，包括word和char两个level
     示例：
         ./zipfs.py filename
+
+## f1.py
+
+    用途: 根据train.trg test.trg ref.trg，得到模型在测试集上all, oov, rare的f1情况
+    示例:
+        ./f1.py train.en test.en ref.en
