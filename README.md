@@ -35,3 +35,7 @@
     用途: 根据train.trg test.trg ref.trg，得到模型在测试集上all, oov, rare的f1情况
     示例:
         ./f1.py train.en test.en ref.en
+
+## convbit.py
+
+    用途：实现字符串与bit串的互转
